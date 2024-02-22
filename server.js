@@ -22,6 +22,7 @@ app.get('/books/:id', (req, res) => {
 
 app.post('/books', (req, res) => {
     books.push(req.body)
+    res.status(201).json(req.body)
 })
 
 app.put('/books/:id', (req, res) => {
@@ -31,7 +32,8 @@ app.put('/books/:id', (req, res) => {
 
 app.delete('/books/:id', (req, res) => {
     const deletedIndex = books.findIndex(book => book.id === req.params.id)
-    delete books[deleteIndex];
+    delete books[deletedIndex];
+    res.status(200).json(req.body)
 })
 
 app.listen(3000, () => {
